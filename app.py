@@ -1,7 +1,5 @@
 # %%
 import streamlit as st
-import streamlit.components as stc
-# Utils
 import fitz
 
 st.title("Test signature addition")
