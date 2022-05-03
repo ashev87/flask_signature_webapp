@@ -5,7 +5,7 @@ import fitz
 st.title("Test signature addition")
 st.header("Upload a pdf")
 # upload a file to work with
-uploaded_pdf = st.file_uploader("Choose a pdf file", type=['pdf'])
+uploaded_pdf = st.file_uploader("Choose a pdf file", type='pdf', accept_multiple_files = False)
 if uploaded_pdf is not None:
     doc = fitz.open(uploaded_pdf)
     try:
