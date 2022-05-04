@@ -1,6 +1,8 @@
 # %%
 import streamlit as st
 import fitz
+from PIL import Image
+import numpy as np
 
 st.title("Test signature addition")
 st.header("Upload a pdf")
@@ -31,7 +33,10 @@ if uploaded_png is not None:
     x = 55
     y = 20
     rect = fitz.Rect(areas[0].x0, areas[0].y0-y, areas[0].x1+x, areas[0].y1+y)
-    lastpage.insert_image(rect, filename = uploaded_png)
+    # convert image to np array
+    file = Image.open(uploaded_png)
+    img_array = np.array(file)
+    lastpage.insert_image(rect, filename = img_array)
     document = doc.convert_to_pdf()
     filename = uploaded_pdf.name[:4] + "_signed" + ".pdf"
     st.download_button(label="Download PDF File", 
