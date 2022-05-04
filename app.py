@@ -35,8 +35,9 @@ if uploaded_png is not None:
     rect = fitz.Rect(areas[0].x0, areas[0].y0-y, areas[0].x1+x, areas[0].y1+y)
     # convert image to np array
     file = Image.open(uploaded_png)
+    st.write(file)
     img_array = np.array(file)
-    lastpage.insert_image(rect, filename = img_array)
+    lastpage.insert_image(rect, filename = file)
     document = doc.convert_to_pdf()
     filename = uploaded_pdf.name[:4] + "_signed" + ".pdf"
     st.download_button(label="Download PDF File", 
