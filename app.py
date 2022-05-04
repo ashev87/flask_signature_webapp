@@ -37,7 +37,7 @@ if uploaded_png is not None:
     file = Image.open(uploaded_png)
     st.write(file)
     img_array = np.array(file)
-    lastpage.insert_image(rect, filename = file)
+    lastpage.insert_image(rect, stream = uploaded_png.getvalue())
     document = doc.convert_to_pdf()
     filename = uploaded_pdf.name[:4] + "_signed" + ".pdf"
     st.download_button(label="Download PDF File", 
