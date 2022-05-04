@@ -9,7 +9,7 @@ uploaded_pdf = st.file_uploader("Choose a pdf file", type='pdf', accept_multiple
 st.json(dict(uploaded_object = uploaded_pdf))
 if uploaded_pdf is not None:
     #doc = fitz.open(uploaded_pdf)
-    doc = fitz.open("pdf", uploaded_pdf)
+    doc = fitz.open("pdf", uploaded_pdf.getvalue())
     try:
         areas = doc[-1].search_for("Customer")
         lastpage = doc[-1]
