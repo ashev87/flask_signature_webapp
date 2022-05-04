@@ -7,7 +7,8 @@ st.header("Upload a pdf")
 # upload a file to work with
 uploaded_pdf = st.file_uploader("Choose a pdf file", type='pdf', accept_multiple_files = False)
 if uploaded_pdf is not None:
-    doc = fitz.open(uploaded_pdf)
+    #doc = fitz.open(uploaded_pdf)
+    doc = fitz.open(stream=uploaded_pdf, filetype="pdf")
     try:
         areas = doc[-1].search_for("Customer")
         lastpage = doc[-1]
